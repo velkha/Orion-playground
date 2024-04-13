@@ -1,0 +1,16 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: end;
+    height: 100%;
+    
+}
+footer a{
+    margin: 1em 1em 1em 1em;
+}
+footer a img {
+    height: 100%;
+    max-height: 3em;
+    max-width: 3em;
+}

@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #421212;
+  --color-secondary: #2c4b2c;
+  --color-tertiary: #181844;
+  --background-color: #000000;
+  --font-color: #ff0000;
+  --console-bar-color: #100e19;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+body {
+  color: var(--font-color);
+  background-image: url('/background.webp');
+  background-size: cover;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 100%;
+  height: 100vh; /* This makes the layout take up the full viewport height */
+  width: 100%;
+}
+
+header {
+  grid-column: 1 ;
+  grid-row: 1;
+  color: var(--font-color);
+  display: grid;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-rows: 85% 15%;
+  grid-template-columns: 100%;
+  width: 100%;
+  height: 100%;
+
+}
+header nav{
+  grid-row: 1;
+  height: 100%;
+  width: 100%;
+}
+header footer{
+  grid-row: 2;
+  height: 100%;
+  width: 100%;
+}
+section {
+  grid-area: 1 / 2 / 2 / 3;
+  color: var(--font-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.console-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  width: 95%;
+  height: 90%;
+  top: 2.5%;
+}
+.console-container .top-bar {
+  display: flex;
+  height: 3em;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  background-color: var(--console-bar-color);
+  flex: 0 0 auto;
+}
+
+.console-container .top-bar .window-controls {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 5em;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.console-container .top-bar .window-controls button {
+  margin: 0px;
+  padding: 0px;
+  width: 2em;
+  height: 100%;
+  font-size: 2em;
+  font-weight: bold;
+  background-color: var(--color-tertiary);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --g: 0px;     /* the gap */
+  --b: 4px;    /* border thickness*/
+  --c: red; /* the color */
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(70%);
+  transition: .3s;
+}
+.console-container .top-bar .window-controls button:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+
+
+
+.console-container>main {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: var(--background-color);
+  flex: 1;
+  border: 10px solid var(--console-bar-color);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+  }
+
+  header {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  section {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
