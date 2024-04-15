@@ -1,16 +1,37 @@
-footer {
+.footer {
     display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: end;
-    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--console-bar-color);
     
+    color: #fff;
+    margin: 0px;
+    padding: 0px;
 }
-footer a{
-    margin: 1em 1em 1em 1em;
-}
-footer a img {
+
+.footer-section {
+    display: flex;
+    align-items: center;
     height: 100%;
-    max-height: 3em;
-    max-width: 3em;
+}
+
+.footer a {
+    height: 100%;
+}
+
+.footer a * {
+    height: 100%;
+}
+
+.app {
+    margin: 0 10px;
+}
+
+.footer img {
+    max-height: 100%;
+    object-fit: contain; /* Limit the maximum height of the image to the height of the footer */
+}
+.footer .footer-section:last-child {
+    margin-right: 10px;
 }

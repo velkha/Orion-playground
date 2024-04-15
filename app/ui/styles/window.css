@@ -1,0 +1,75 @@
+
+.window {
+    position: absolute;
+    resize: both;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 600px;
+}
+.window .top-bar {
+    display: flex;
+    height: 3em;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    background-color: var(--console-bar-color);
+    flex: 0 0 auto;
+}
+
+.window .top-bar .window-controls {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 5em;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.window .top-bar .window-controls button {
+    margin: 0px;
+    padding: 0px;
+    width: 2em;
+    height: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    background-color: var(--color-tertiary);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --g: 0px;     /* the gap */
+    --b: 4px;    /* border thickness*/
+    --c: red; /* the color */
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b),var(--b) 200%;
+    cursor: pointer;
+    filter: grayscale(70%);
+    transition: .3s;
+}
+.window .top-bar .window-controls button:hover {
+    --_p: 75%;
+    filter: grayscale(0%);
+}  
+.window>main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: var(--background-color);
+    flex: 1;
+    border-left: 5px solid var(--console-bar-color);
+}

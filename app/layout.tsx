@@ -17,20 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} antialiased bg-slate-600`}>
-        <header>
-          <NavLinks />
-          <Footer />
-        </header>
         <section>
-          <div className="console-container">
-            <div className="top-bar">
-              <div className="window-controls"><button>x</button></div>
-            </div>
-            <main>
-              {children}
-            </main>
-          </div>
+          <NavLinks />
+          {children}
         </section>
+        <Footer />
       </body>
     </html>
   );

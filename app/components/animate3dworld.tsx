@@ -92,20 +92,19 @@ export default function P3dworld() {
                     camera.position.y -= 1;
                     moveCamera();
                     break;
-
-                case 'a':
+                case 's':
                     camera.rotation.x -= 0.1;
                     moveCamera();
                     break;
-                case 'd':
+                case 'w':
                     camera.rotation.x += 0.1;
                     moveCamera();
                     break;
-                case 'w':
+                case 'd':
                     camera.rotation.y -= 0.1;
                     moveCamera();
                     break;
-                case 's':
+                case 'a':
                     camera.rotation.y += 0.1;
                     moveCamera();
                     break;

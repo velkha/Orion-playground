@@ -7,11 +7,16 @@ export default function NavLink({ href, src, alt, id }: { href: string, src: str
     const pathname = usePathname();
 
     const isSelected = pathname === href;
-
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.preventDefault(); // Prevent the default click behavior
+    }
+    
     return (
-        <Link href={href} >
-            <Image src={src} alt={alt} width={100} height={100} id={id} className={isSelected ? "selected" : ""}/>
-            <span className={isSelected ? "selected" : ""}>{alt}</span>
+        <Link href={href} passHref>
+            <div onClick={handleClick} onDoubleClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => { e.stopPropagation(); window.location.href = href }}>
+                <Image src={src} alt={alt} width={100} height={100} id={id} />
+                <span className={isSelected ? 'selected' : ''}>{alt}</span>
+            </div>
         </Link>
     )
 
