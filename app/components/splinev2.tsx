@@ -11,9 +11,9 @@ import { useThree } from '@react-three/fiber'
 import cameraData from './cameraData.json'
 
 const points = cameraData.map((data: any) => ({
-  position: new THREE.Vector3(data.position.x, data.position.y, data.position.z),
-  rotation: new THREE.Euler(data.rotation._x, data.rotation._y, data.rotation._z, data.rotation._order),
-  lookAt: new THREE.Vector3(data.lookAt.x, data.lookAt.y, data.lookAt.z),
+    position: new THREE.Vector3(data.position.x, data.position.y, data.position.z),
+    rotation: new THREE.Euler(data.rotation._x, data.rotation._y, data.rotation._z, data.rotation._order),
+    lookAt: new THREE.Vector3(data.lookAt.x, data.lookAt.y, data.lookAt.z),
 }))
 let position = {
     x: 0,
@@ -25,6 +25,7 @@ let lookAt = {
     y: 0,
     z: 0
 }
+type GLTF = typeof GLTF
 type GLTFResult = GLTF & {
     nodes: {
         [name: string]: Mesh;
@@ -49,8 +50,8 @@ type CameraData = {
     position: THREE.Vector3
     rotation: THREE.Euler
     lookAt: THREE.Vector3
-  }
-  
+}
+
 function Model() {
     const { scene } = useGLTF('/3dworld/untitled.glb') as GLTFResult
     const [index, setIndex] = useState(0)
@@ -136,15 +137,7 @@ export default function Splinev2() {
     )
 }
 
-
-
-
-
-
-
-
 /*
-
 function Box(props: ThreeElements['mesh']) {
   const meshRef = useRef<THREE.Mesh>(null!)
   const [hovered, setHover] = useState(false)

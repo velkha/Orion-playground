@@ -2,8 +2,13 @@
 import { useEffect, useRef } from 'react';
 import '../ui/styles/3dworld.css';
 import * as THREE from 'three';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
 
+/**
+ * @deprecated
+ *  ESTA CLASE SE USO PARA APRENDER LAS BASES DE THREE.JS ESTA ABSOLUTALMENTE OBSOLETA Y MAL CODIFICADA, IGNORARLA
+ * @returns 
+ */
 export default function P3dworld() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     let animationFrameId: number;
@@ -14,7 +19,6 @@ export default function P3dworld() {
         const parent = canvas.parentElement!;
         const width = parent.clientWidth;
         const height = parent.clientHeight;
-        console.log(width, height);
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
         const renderer = canvas ? new THREE.WebGLRenderer({ canvas }) : new THREE.WebGLRenderer();
@@ -53,19 +57,20 @@ export default function P3dworld() {
         const gridHelper = new THREE.GridHelper(200, 50);
         scene.add(lightHelper, gridHelper);
 
-
         function moveCamera() {
             const t = document.body.getBoundingClientRect().top;
             torus.rotation.x += 0.05;
             torus.rotation.y += 0.075;
             torus.rotation.z += 0.05;
         }
+
         const controls = new PointerLockControls(camera, renderer.domElement);
 
-// Lock the pointer when the user clicks on the renderer's DOM element
+        // Lock the pointer when the user clicks on the renderer's DOM element
         renderer.domElement.addEventListener('click', () => {
             controls.lock();
         });
+
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
@@ -115,17 +120,16 @@ export default function P3dworld() {
             const geometry = new THREE.SphereGeometry(0.25, 24, 24);
             const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
             const star = new THREE.Mesh(geometry, material);
-          
+            
             const [x, y, z] = Array(3)
-              .fill(1)
-              .map(() => THREE.MathUtils.randFloatSpread(100));
-          
+                .fill(1)
+                .map(() => THREE.MathUtils.randFloatSpread(100));
+            
             star.position.set(x, y, z);
             scene.add(star);
-          }
-          
-          Array(200).fill(1).forEach(addStar);
-        
+        }
+
+        Array(200).fill(1).forEach(addStar);
 
         function animate() {
             // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -140,22 +144,26 @@ export default function P3dworld() {
 
         animate();
 
-        // Add resize event listener
-        window.addEventListener('resize', () => {
+        // Resize listener
+        const onWindowResize = () => {
             const width = parent.clientWidth;
             const height = parent.clientHeight;
-            renderer.setSize(width, height);
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
-        });
+            renderer.setSize(width, height);
+        }
+
+        window.addEventListener('resize', onWindowResize);
+
         // Cleanup function to cancel animation loop when component unmounts
         return () => {
             cancelAnimationFrame(animationFrameId);
+            window.removeEventListener('resize', onWindowResize);
         };
     }, []);
 
     return (
-        <div id='div3dworld'>
+        <div className="3dworld" style={{ width: '100%', height: '100%' }}>
             <canvas id="3dworld" ref={canvasRef}></canvas>
         </div>
     );

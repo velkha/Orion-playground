@@ -1,4 +1,4 @@
-import P3dworld from "../../components/animate3dworld";
+import P3dworld from "../../components/animate3dworld_old";
 
 export default function p3dworld() {
 
