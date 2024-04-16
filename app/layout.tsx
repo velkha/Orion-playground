@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { montserrat } from './ui/fonts';
 import "./ui/styles/globals.css";
-import NavLinks from "./components/nav-links";
-import Footer from "./components/footer";
+import NavLinks from "./components/navComponents/nav-links";
+import Footer from "./components/footerComponents/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",

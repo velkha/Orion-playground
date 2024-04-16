@@ -1,5 +1,5 @@
 import Image from "next/image";
-import NavLinks from "./components/nav-links";
+import NavLinks from "./components/navComponents/nav-links";
 import Window from "./components/window";
 export default function Home() {
   return (

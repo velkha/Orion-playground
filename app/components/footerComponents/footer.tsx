@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import '../ui/styles/footer.css'
+import '../../ui/styles/footer.css'
 import Clock from './clock'
 
 export default function Footer() {

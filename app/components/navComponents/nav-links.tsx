@@ -1,6 +1,6 @@
-import '../ui/styles/nav-links.css';
+import '../../ui/styles/nav-links.css';
 import NavLink from './nav-link';
-import Clock from './clock';
+import Clock from '../footerComponents/clock';
 export default function NavLinks() {
   
 

@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react';
-import '../ui/styles/3dworld.css';
+import '../../ui/styles/3dworld.css';
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
 
