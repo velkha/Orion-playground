@@ -4,7 +4,10 @@ import '../ui/styles/3dworld.css';
 import * as THREE from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
+/**
+ * Antigua funcion de Spline, ahora se usa la versión de Splinev2, mantenida como ejemplos practicos
+ * @returns 
+ */
 export default function P3dworld() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     let animationFrameId: number;

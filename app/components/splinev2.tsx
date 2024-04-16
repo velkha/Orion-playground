@@ -10,6 +10,9 @@ import { OrbitControls } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import cameraData from './cameraData.json'
 
+/**
+ * Recoge los datos de la cámara y los guarda en un array para el movimiento de scroll
+ */
 const points = cameraData.map((data: any) => ({
     position: new THREE.Vector3(data.position.x, data.position.y, data.position.z),
     rotation: new THREE.Euler(data.rotation._x, data.rotation._y, data.rotation._z, data.rotation._order),
@@ -25,7 +28,9 @@ let lookAt = {
     y: 0,
     z: 0
 }
+//Se declara el type para evitar error de typescript al detectar el GLTF como un namespace
 type GLTF = typeof GLTF
+//Definición del tipo de resultado de la función useGLTF
 type GLTFResult = GLTF & {
     nodes: {
         [name: string]: Mesh;
@@ -34,6 +39,7 @@ type GLTFResult = GLTF & {
         [name: string]: MeshStandardMaterial;
     };
 };
+//Función para limitar el framerate del canvas animado
 function createFrameRateLimiter(fps: number) {
     let then = performance.now()
     const interval = 1000 / fps
@@ -46,17 +52,25 @@ function createFrameRateLimiter(fps: number) {
         })
     }
 }
+//Definición de los datos de la cámara
 type CameraData = {
     position: THREE.Vector3
     rotation: THREE.Euler
     lookAt: THREE.Vector3
 }
 
+/**
+ * Funcion de carga del modelo 3D y de las configuraciones de la camara
+ * @returns 
+ */
 function Model() {
+    /** Carga del modelo base de la escena */
     const { scene } = useGLTF('/3dworld/untitled.glb') as GLTFResult
+    /** Carga de la configuración de la cámara */
     const [index, setIndex] = useState(0)
-    
+    // Limita el framerate a 60fps
     const limitFrameRate = createFrameRateLimiter(60)
+    // Evento de scroll para cambiar entre las posiciones de la cámara
     useEffect(() => {
         const handleWheel = (event: WheelEvent) => {
             if (event.deltaY < 0) {
@@ -72,9 +86,12 @@ function Model() {
             window.removeEventListener('wheel', handleWheel)
         }
     }, [])
+    // Evento de teclado para guardar la posición de la cámara
     const { camera } = useThree()
     const [cameraData, setCameraData] = useState<CameraData[]>([])
-
+    /** Funcion para guardar diferentes posiciones de la camara para facilitar asi la construccion de paths
+     * para uso futuro
+     */
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'q') {
@@ -104,7 +121,7 @@ function Model() {
         }
     }, [camera, cameraData])
     
-
+    // Animación de la cámara
     useFrame(({ camera }) => {
         limitFrameRate(() => {
             const targetPosition = points[index].position
@@ -136,7 +153,9 @@ export default function Splinev2() {
     </>
     )
 }
-
+/**
+ * Funcion antigua, deshabilitada pero mantenida como ejemplo de uso de ThreeElements
+ */
 /*
 function Box(props: ThreeElements['mesh']) {
   const meshRef = useRef<THREE.Mesh>(null!)

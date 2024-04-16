@@ -11,17 +11,12 @@ export default function NavLinks() {
           <li>
             <NavLink href="/apps/calculadora" src="/python.svg" alt="calculadora" id="calculadora" />
           </li>
-          
           <li>
             <NavLink href="/apps/spline" src="/python.svg" alt="spline" id="spline" />
           </li>
-
           <li>
             <NavLink href="/apps/3dworld" src="/python.svg" alt="3dworld" id="3dworld" />
           </li>
-
-          
-          
         </ul>
       </div>
     </nav>
