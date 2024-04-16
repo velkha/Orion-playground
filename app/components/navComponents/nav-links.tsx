@@ -17,6 +17,9 @@ export default function NavLinks() {
           <li>
             <NavLink href="/apps/3dworld" src="/python.svg" alt="3dworld" id="3dworld" />
           </li>
+          <li>
+            <NavLink href="/apps/assistant" src="/python.svg" alt="assistant" id="assistant" />
+          </li>
         </ul>
       </div>
     </nav>
