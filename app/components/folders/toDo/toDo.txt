@@ -1,0 +1,33 @@
+Delete folder and content after finish
+
+Folder Icons:
+    General Folder: A standard yellow folder icon for general use.
+    Documents Folder: A blue folder with a white "DOC" label on it.
+    Pictures Folder: A purple folder with an image icon or camera symbol.
+    Music Folder: An orange folder with a music note on it.
+    Videos Folder: A green folder with a film strip or camera reel icon.
+    Downloads Folder: A gray folder with a downward arrow symbol.
+File Type Icons:
+    Document File: An icon of a white page with a small "DOC" in the corner.
+    Image File: A thumbnail of a mountain or landscape, symbolizing a photo.
+    Music File: A music note with a sound wave around it.
+    Video File: A clapperboard or a film reel icon.
+    PDF File: A red page with "PDF" written on it.
+    Excel File: A green "X" or spreadsheet grid on a page.
+Application Icons:
+    Web Browser: A compass or a globe icon.
+    Email Client: An envelope with an "@" symbol.
+    Office Suite: Icons that resemble small office tools like a pen, ruler, or briefcase.
+    Media Player: A play button with musical notes or a film strip.
+    Settings: A gear or wrench symbol.
+    Trash/Recycle Bin: A trash can, sometimes showing papers being tossed in.
+Utility and System Icons:
+    Clock/Time: An analog or digital clock face.
+    Calendar: A single page calendar.
+    Network: Several interconnected nodes or a globe with links.
+    Security: A shield with a check mark or a lock.
+    Search: A magnifying glass icon.
+    Help: A question mark, often inside a circle or lifebuoy.
+
+Folder with image (it will change with the image of something inside it)
+    
