@@ -9,6 +9,7 @@
   --background-color: #000000;
   --font-color: #ff0000;
   --console-bar-color: #141414c4;
+  --folder-bar-color: #131632c4;
 }
 
 @layer utilities {

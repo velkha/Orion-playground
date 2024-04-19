@@ -1,0 +1,102 @@
+
+.folder {
+    position: absolute;
+    resize: both;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 600px;
+}
+.folder .top-bar {
+    display: flex;
+    height: 3em;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    background-color: var(--folder-bar-color);
+    flex: 0 0 auto;
+}
+
+.folder .top-bar .folder-controls {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 5em;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.folder .top-bar .folder-controls button {
+    margin: 0px;
+    padding: 0px;
+    width: 2em;
+    height: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    background-color: var(--color-tertiary);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --g: 0px;     /* the gap */
+    --b: 4px;    /* border thickness*/
+    --c: red; /* the color */
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b),var(--b) 200%;
+    cursor: pointer;
+    filter: grayscale(70%);
+    transition: .3s;
+}
+.folder .top-bar .folder-controls button:hover {
+    --_p: 75%;
+    filter: grayscale(0%);
+}  
+.folder>.folderMain {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 3em);
+    background-color: var(--background-color);
+    flex: 1;
+    border-left: 5px solid var(--folder-bar-color);
+}
+.folderMain>a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 5em;
+    text-decoration: none;
+    color: var(--font-color);
+    font-size: 2em;
+    font-weight: bold;
+    background-color: var(--color-primary);
+    border: 5px solid var(--color-secondary);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+.folderMain>a>div{
+    background-color: blueviolet;
+    color: white;
+}
+.folderMain>a>div>span{
+    font-size: 20px;
+}
