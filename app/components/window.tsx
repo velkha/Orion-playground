@@ -1,12 +1,33 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 import '../ui/styles/window.css'
+import { usePathname } from 'next/navigation';
+import { useOpenApps } from './contexts/OpenAppsContext'; // Update the import path as necessary
 
-export default function Window({ children }: { children: React.ReactNode }) {
+export default function Window({ children }: { children: React.ReactNode}) {
+    //console.log('Rendering Window component');
     const [isActive, setIsActive] = useState(true)
     const [isDragging, setIsDragging] = useState(false)
     const [position, setPosition] = useState({ x: 0, y: 0 })
-    const windowRef = useRef(null)
+    const windowRef = useRef(null);
+    const { openApps, setOpenApps } = useOpenApps();  // Use the context
+    const pathname = usePathname(); // Assume this gives a unique identifier for each window
+
+    /*
+    TODO: esto tiene mala pinta, no se si es correct, me esta dando una neurisma, lo dejamos por ahora,
+    !pero hay que revisarlo buena suerte yo del futuro, la vas a necesitar
+    Contexto: es un hook que se ejecuta cuando se monta el componente, y se ejecuta cuando se desmonta para guardar el estado de 
+    este al montarlo de nuevo, si se hace click en el valor que aparecera en el footer (como de un menu de windows se tratase)
+    */
+    useEffect(() => {
+        const windowState = { isActive, position }; // Capture all relevant state
+        const windowComponent = { name: pathname, component: Window, state: windowState };
+        setOpenApps(prevApps => [...prevApps.filter(app => app.name !== pathname), windowComponent]);
+    
+        return () => {
+            setOpenApps(prevApps => prevApps.filter(app => app.name !== pathname));
+        };
+    }, [pathname, isActive, position, setOpenApps]);
 
     const handleClose = () => {
         setIsActive(false)
@@ -24,7 +45,7 @@ export default function Window({ children }: { children: React.ReactNode }) {
         const dx = e.clientX - position.x
         const dy = e.clientY - position.y
         if (windowRef.current) {
-        (windowRef.current as HTMLElement).style.transform = `translate(${dx}px, ${dy}px)`
+            (windowRef.current as HTMLElement).style.transform = `translate(${dx}px, ${dy}px)`
         }
     }
 
@@ -34,9 +55,9 @@ export default function Window({ children }: { children: React.ReactNode }) {
     }
     useEffect(() => {
         if (windowRef.current) {
-          (windowRef.current as HTMLElement).style.transform = `translate(200px, 200px)`
+            (windowRef.current as HTMLElement).style.transform = `translate(200px, 200px)`
         }
-      }, [])
+    }, [])
     return (
         isActive && (
         <div className="window" ref={windowRef} style={{ zIndex: isActive ? 1 : -1 }}>
@@ -46,7 +67,7 @@ export default function Window({ children }: { children: React.ReactNode }) {
             </div>
             </div>
             <main>
-            {children}
+                {children}
             </main>
         </div>
         )

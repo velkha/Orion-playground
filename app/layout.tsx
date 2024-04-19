@@ -3,6 +3,7 @@ import { montserrat } from './ui/fonts';
 import "./ui/styles/globals.css";
 import NavLinks from "./components/navComponents/nav-links";
 import Footer from "./components/footerComponents/footer";
+import { OpenAppsProvider } from "./components/contexts/OpenAppsProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,13 +17,15 @@ export default function RootLayout({
   }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased bg-slate-600`}>
-        <section>
-          <NavLinks />
-          {children}
-        </section>
-        <Footer />
-      </body>
+      <OpenAppsProvider>
+        <body className={`${montserrat.className} antialiased bg-slate-600`}>
+          <section>
+            <NavLinks />
+            {children}
+          </section>
+          <Footer />
+        </body>
+      </OpenAppsProvider>
     </html>
   );
 }

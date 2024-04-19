@@ -1,15 +1,13 @@
-import Image from "next/image";
-import NavLinks from "./components/navComponents/nav-links";
 import Window from "./components/window";
 import Folder from "./components/folders/folder";
 export default function Home() {
   return (
-        <>
-          <Window>
-            <h1>Hello, world!</h1>
-            <p>Welcome to my application.</p>
-          </Window>
-          <Folder folder="portfolio" />
-        </>
+    <>
+      <Window >
+        <h1>Hello, world!</h1>
+        <p>Welcome to my application.</p>
+      </Window>
+      <Folder folder="portfolio" />
+    </>
   );
 }
