@@ -6,7 +6,7 @@ export const login = async (username, password) => {
     try {
         const response = await axios.post(API_URL, { username, password });
         if (response.data.token) {
-            localStorage.setItem('token', response.data.token); // Save the token in localStorage
+            localStorage.setItem('orion_token', response.data.token); // Save the token in localStorage
         }
         return response.data; // Return the full response data
     } catch (error) {

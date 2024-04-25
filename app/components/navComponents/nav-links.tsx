@@ -20,6 +20,9 @@ export default function NavLinks() {
           <li>
             <NavLink href="/apps/assistant" src="/python.svg" alt="assistant" id="assistant" />
           </li>
+          <li>
+            <NavLink href="/apps/test_auth" src="/python.svg" alt="test_auth" id="test_auth" />
+          </li>
         </ul>
       </div>
     </nav>

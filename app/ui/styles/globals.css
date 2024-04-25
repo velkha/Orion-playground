@@ -37,6 +37,15 @@ footer {
   height: 5%;
 }
 
+/* Default styles */
+button.default {
+  background-color: var(--color-primary);
+  color: var(--font-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 
 /* Mobile styles */
