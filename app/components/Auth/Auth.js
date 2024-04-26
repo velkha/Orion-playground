@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.interceptors.request.use(function (config) {
     // Assuming 'token' is stored in localStorage after login
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('orion_token');
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

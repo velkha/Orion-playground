@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:9123/auth';
+const API_URL = 'http://localhost:9992/api/auth/signup';
 
 export const login = async (username, password) => {
     try {
@@ -16,5 +16,5 @@ export const login = async (username, password) => {
 };
 
 export const logout = () => {
-    localStorage.removeItem('token'); // Remove the token from localStorage
+    localStorage.removeItem('orion_token'); // Remove the token from localStorage
 };
