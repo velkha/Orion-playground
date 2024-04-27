@@ -5,15 +5,15 @@ import React, { useState } from 'react';
 import {fetchData} from '../../js/apiCall/fetchData'
 
 export default function TestAuth() {
-    const [user, setUser] = useState('');
+    const [username, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const handleAuth = () => {
         console.log('Auth');
-        fetchData('http://localhost:9992/api/auth/signup', 'POST', {user, password})
+        fetchData('http://localhost:9992/api/auth/signup', 'POST', {username, email, password})
     }
     const handleLogin = () => {
-        console.log(login(user, password));
+        console.log(login(username, password));
     }
 
 
@@ -23,7 +23,7 @@ export default function TestAuth() {
                     <h1>Test Auth</h1>
                 </div>
                 <div className='login_details'>
-                <input type='text' placeholder='Usuario' value={user} onChange={e => setUser(e.target.value)} />
+                <input type='text' placeholder='Usuario' value={username} onChange={e => setUser(e.target.value)} />
                 <input type='text' placeholder='email' value={email} onChange={e => setEmail(e.target.value)} />
                 <input type='password' placeholder='Contraseña' value={password} onChange={e => setPassword(e.target.value)} />
                 </div>
