@@ -2,18 +2,25 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Clock() {
-    const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
+    const [currentTime, setCurrentTime] = useState('');
 
     useEffect(() => {
+        setCurrentTime(formatTime(new Date()));
+
         const interval = setInterval(() => {
-            setCurrentTime(new Date().toLocaleTimeString());
+            setCurrentTime(formatTime(new Date()));
         }, 60000);
 
         return () => {
             clearInterval(interval);
         };
     }, []);
+
     return (
-        <div>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+        <div>{currentTime}</div>
     )
+}
+
+function formatTime(date: Date) {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
 }
