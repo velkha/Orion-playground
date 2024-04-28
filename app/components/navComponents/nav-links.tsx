@@ -1,8 +1,11 @@
+import dynamic from 'next/dynamic';
 import '../../ui/styles/nav-links.css';
 import NavLink from './nav-link';
 import Clock from '../footerComponents/clock';
 export default function NavLinks() {
-  
+  const AuthCheck = dynamic(() => import('../../js/Auth/AuthCheck'), {
+      ssr: false  // Disable server-side rendering for this component
+  });
 
   return (
     <nav>
@@ -23,6 +26,11 @@ export default function NavLinks() {
           <li>
             <NavLink href="/apps/test_auth" src="/python.svg" alt="test_auth" id="test_auth" />
           </li>
+          <AuthCheck>
+            <li>
+              <NavLink href="/apps/a/profile" src="/python.svg" alt="profile" id="profile" />
+            </li>
+          </AuthCheck>
         </ul>
       </div>
     </nav>

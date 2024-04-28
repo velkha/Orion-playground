@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:9992/api/auth/signup';
+const API_URL = 'http://localhost:9992/api/auth/signin';
 
 export const login = async (username, password) => {
     try {
@@ -9,10 +9,10 @@ export const login = async (username, password) => {
             console.log('Login success:', response.data.token);
             localStorage.setItem('orion_token', response.data.token); // Save the token in localStorage
         }
-        return response.data; // Return the full response data
+        return true; // Return the full response data
     } catch (error) {
         console.error('Login error:', error);
-        throw error;
+        return false; // Return false if the login failed
     }
 };
 
